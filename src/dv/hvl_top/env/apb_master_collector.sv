@@ -73,13 +73,13 @@ function void apb_master_collector::write(apb_master_tx t);
 
   `uvm_info(get_type_name(),$sformatf("Req print = %0s",t.sprint()),UVM_HIGH)
 
-  rg = map.get_reg_by_offset(t.paddr,t.pwrite);
+   rg = map.get_reg_by_offset(t.paddr,t.pwrite);
 
   `uvm_info(get_type_name(), $sformatf("rg_name = %0s", rg.get_name()),UVM_HIGH)
   `uvm_info(get_type_name(), $sformatf("rg_address = %0h", rg.get_address()),UVM_HIGH)
   `uvm_info(get_type_name(), $sformatf("rg_data = %0h", rg.get()),UVM_HIGH)
   `uvm_info(get_type_name(), $sformatf("map_name = %0p", map.get_full_name()),UVM_HIGH)
-  //`uvm_info(get_type_name(), $sformatf("map_value = %0p", map),UVM_HIGH) 
+  `uvm_info(get_type_name(), $sformatf("map_value = %0p", map),UVM_HIGH) 
 
   reg_data_access(rg);
 

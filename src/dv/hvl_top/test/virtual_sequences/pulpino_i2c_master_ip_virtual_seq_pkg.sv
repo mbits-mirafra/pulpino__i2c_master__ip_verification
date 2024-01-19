@@ -24,6 +24,7 @@ package pulpino_i2c_master_ip_virtual_seq_pkg;
   // Including required apb master seq files
   //-------------------------------------------------------
   `include "pulpino_i2c_master_ip_virtual_base_seq.sv"
+  `include "pulpino_i2c_master_ip_virtual_basic_write_seq.sv"
   /*
   `include "pulpino_i2c_master_ip_virtual_basic_write_seq.sv"
   `include "pulpino_i2c_master_ip_virtual_basic_read_seq.sv"

@@ -59,4 +59,4 @@
 `define I2C_CMD_READ  4'b1000
 
 // Modelsim-ASE requires a timescale directive
-`timescale 1 ns / 1 ns
+//`timescale 1 ns / 1 ns
