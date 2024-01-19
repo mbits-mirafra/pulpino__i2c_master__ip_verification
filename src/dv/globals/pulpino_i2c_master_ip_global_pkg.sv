@@ -1,14 +1,16 @@
-`ifndef PULPINO_SPI_MASTER_IP_GLOBAL_PKG_GLOBAL_INCLUDED_
-`define PULPINO_SPI_MASTER_IP_GLOBAL_PKG_GLOBAL_INCLUDED_
+`ifndef PULPINO_I2C_MASTER_IP_GLOBAL_PKG_GLOBAL_INCLUDED_
+`define PULPINO_I2C_MASTER_IP_GLOBAL_PKG_GLOBAL_INCLUDED_
 
 //--------------------------------------------------------------------------------------------
-// Package: pulpino_spi_master_ip_global_pkg
+// Package: pulpino_i2c_master_ip_global_pkg
 // Used for storing enums, parameters and defines
 //--------------------------------------------------------------------------------------------
-package pulpino_spi_master_ip_global_pkg;
+package pulpino_i2c_master_ip_global_pkg;
+
+  parameter CHAR_LENGTH = 8;
 
   typedef struct{
-    bit [31:0]spi_length;
+    bit [31:0]i2c_length;
     bit [5:0]cmd_len;
     bit [5:0]addr_len;
     bit [15:0]mosi_data_len;
@@ -26,7 +28,7 @@ package pulpino_spi_master_ip_global_pkg;
     int j;
   }collector_packet_s;
 
-endpackage : pulpino_spi_master_ip_global_pkg
+endpackage : pulpino_i2c_master_ip_global_pkg
 
 `endif
 

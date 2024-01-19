@@ -130,13 +130,13 @@ endfunction : write
 //--------------------------------------------------------------------------------------------
 function void apb_master_collector::reg_data_access(uvm_reg rg);
 
-  if(rg.get_name == "SPILEN") begin
-    coll_pkt.spi_length = rg.get();  
-    `uvm_info(get_type_name(), $sformatf("coll_pkt.spi_length = %0h", coll_pkt.spi_length),UVM_HIGH)
-    coll_pkt.cmd_len = coll_pkt.spi_length[5:0];
-    coll_pkt.addr_len = coll_pkt.spi_length[13:8];
-    coll_pkt.mosi_data_len = coll_pkt.spi_length[31:16];
-  end
+// GopalS:   if(rg.get_name == "SPILEN") begin
+// GopalS:     coll_pkt.spi_length = rg.get();  
+// GopalS:     `uvm_info(get_type_name(), $sformatf("coll_pkt.spi_length = %0h", coll_pkt.spi_length),UVM_HIGH)
+// GopalS:     coll_pkt.cmd_len = coll_pkt.spi_length[5:0];
+// GopalS:     coll_pkt.addr_len = coll_pkt.spi_length[13:8];
+// GopalS:     coll_pkt.mosi_data_len = coll_pkt.spi_length[31:16];
+// GopalS:   end
 
   if(rg.get_name == "SPICMD") begin : SPICMD
     
@@ -148,7 +148,7 @@ function void apb_master_collector::reg_data_access(uvm_reg rg);
     cmd_local = rg.get();
     `uvm_info(get_type_name(), $sformatf("cmd_local = %0h", cmd_local),UVM_HIGH)
 
-    `uvm_info(get_type_name(), $sformatf("spi_len[5:0] = %0h", coll_pkt.spi_length[5:0]),UVM_HIGH)
+// GopalS:     `uvm_info(get_type_name(), $sformatf("spi_len[5:0] = %0h", coll_pkt.spi_length[5:0]),UVM_HIGH)
 
     foreach(cmd_local[i]) begin
       if('d31 - coll_pkt.cmd_len == i) begin
@@ -181,7 +181,7 @@ function void apb_master_collector::reg_data_access(uvm_reg rg);
     addr_local = rg.get();
     `uvm_info(get_type_name(), $sformatf("addr_local = %0h", addr_local),UVM_HIGH)
 
-    `uvm_info(get_type_name(), $sformatf("spi_len[13:8] = %0h", coll_pkt.spi_length[13:8]),UVM_HIGH)
+ // GopalS:    `uvm_info(get_type_name(), $sformatf("spi_len[13:8] = %0h", coll_pkt.spi_length[13:8]),UVM_HIGH)
 
     foreach(addr_local[i]) begin
       if('d31 - coll_pkt.addr_len == i) begin
@@ -255,7 +255,7 @@ function void apb_master_collector::tx_fifo_reg_access(uvm_reg rg);
     mosi_data_local = rg.get();
     `uvm_info(get_type_name(), $sformatf("mosi_data_local = %0h", mosi_data_local),UVM_HIGH)
 
-    `uvm_info(get_type_name(), $sformatf("spi_len[16:31] = %0h", coll_pkt.spi_length[31:16]),UVM_HIGH)
+// GopalS:     `uvm_info(get_type_name(), $sformatf("spi_len[16:31] = %0h", coll_pkt.spi_length[31:16]),UVM_HIGH)
 
     mosi_data_len_local = coll_pkt.mosi_data_len;
 
@@ -300,7 +300,7 @@ function void apb_master_collector::rx_fifo_reg_access(uvm_reg rg);
     miso_data_local = rg.get();
     `uvm_info(get_type_name(), $sformatf("miso_data_local = %0h", miso_data_local),UVM_HIGH)
 
-    `uvm_info(get_type_name(), $sformatf("spi_len[16:31] = %0h", coll_pkt.spi_length[31:16]),UVM_HIGH)
+ // GopalS:    `uvm_info(get_type_name(), $sformatf("spi_len[16:31] = %0h", coll_pkt.spi_length[31:16]),UVM_HIGH)
 
     miso_data_len_local = coll_pkt.miso_data_len;
 

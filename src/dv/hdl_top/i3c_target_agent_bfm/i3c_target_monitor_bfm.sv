@@ -1,7 +1,7 @@
 `ifndef I3C_TARGET_MONITOR_BFM_INCLUDED_
 `define I3C_TARGET_MONITOR_BFM_INCLUDED_
 
-import i3c_globals_pkg::*; 
+import i3c_target_global_pkg::*; 
 
 interface i3c_target_monitor_bfm(input pclk, 
                                 input areset, 
@@ -49,7 +49,7 @@ interface i3c_target_monitor_bfm(input pclk,
     sample_operation(struct_packet.operation);
     sampleAddressAck(struct_packet.targetAddressStatus);
     if(struct_packet.targetAddressStatus == ACK) begin
-      if(struct_packet.operation == WRITE) begin
+      if(struct_packet.operation == O_WRITE) begin
         sampleWriteDataAndACK(struct_packet, struct_cfg);
       end else begin
         sampleReadDataAndACK(struct_packet, struct_cfg);
@@ -129,9 +129,9 @@ interface i3c_target_monitor_bfm(input pclk,
     detectEdge_scl(POSEDGE);
     operation = sda_i;
    if(operation == 0)
-     wr_rd = WRITE;
+     wr_rd = O_WRITE;
    else
-     wr_rd = READ;
+     wr_rd = O_READ;
   endtask: sample_operation
   
 

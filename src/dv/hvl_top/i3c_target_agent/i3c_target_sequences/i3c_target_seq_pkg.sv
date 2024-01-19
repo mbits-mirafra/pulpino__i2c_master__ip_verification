@@ -6,7 +6,7 @@ package i3c_target_seq_pkg;
   `include "uvm_macros.svh"
    import uvm_pkg::*;
    import i3c_target_pkg::*;
-   import i3c_globals_pkg::*;
+   import i3c_target_global_pkg::*;
   
    `include "i3c_target_base_seq.sv"
    `include "i3c_target_writeOperationWith8bitsData_seq.sv"

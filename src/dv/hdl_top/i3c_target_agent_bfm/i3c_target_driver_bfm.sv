@@ -1,7 +1,7 @@
 `ifndef I3C_TARGET_DRIVER_BFM_INCLUDED_
 `define I3C_TARGET_DRIVER_BFM_INCLUDED_
 
-import i3c_globals_pkg::*;
+import i3c_target_global_pkg::*;
 interface i3c_target_driver_bfm(input pclk, 
                                input areset,
                                input scl_i,
@@ -67,7 +67,7 @@ interface i3c_target_driver_bfm(input pclk,
     driveAddressAck(dataPacketStruck.targetAddressStatus);
 
     if(dataPacketStruck.targetAddressStatus == ACK) begin
-      if(dataPacketStruck.operation == WRITE) begin
+      if(dataPacketStruck.operation == O_WRITE) begin
         sampleWriteDataAndDriveACK(dataPacketStruck,
                                    configPacketStruck);
       end else begin
@@ -172,9 +172,9 @@ interface i3c_target_driver_bfm(input pclk,
     drive_sda(1);
 
     if(operation == 1'b0) begin
-      wr_rd = WRITE;
+      wr_rd = O_WRITE;
     end else begin
-      wr_rd = READ;
+      wr_rd = O_READ;
     end
   endtask: sample_operation
 

@@ -6,7 +6,7 @@ module i3c_target_agent_bfm #(parameter int target_ID=0)
 
   import uvm_pkg::*;
   `include "uvm_macros.svh"
-  import i3c_globals_pkg::*;
+  import i3c_target_global_pkg::*;
 
   i3c_target_driver_bfm i3c_target_drv_bfm_h(.pclk(intf.pclk), 
                                            .areset(intf.areset),

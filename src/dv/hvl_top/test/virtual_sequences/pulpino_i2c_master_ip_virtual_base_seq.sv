@@ -1,38 +1,38 @@
-`ifndef PULPINO_SPI_MASTER_IP_VIRTUAL_BASE_SEQ_INCLUDED_
-`define PULPINO_SPI_MASTER_IP_VIRTUAL_BASE_SEQ_INCLUDED_
+`ifndef PULPINO_I2C_MASTER_IP_VIRTUAL_BASE_SEQ_INCLUDED_
+`define PULPINO_I2C_MASTER_IP_VIRTUAL_BASE_SEQ_INCLUDED_
 
 //--------------------------------------------------------------------------------------------
-// Class: pulpino_spi_master_ip_virtual_base_seq
+// Class: pulpino_i2c_master_ip_virtual_base_seq
 // Holds the handle of actual sequencer.
 //--------------------------------------------------------------------------------------------
-class pulpino_spi_master_ip_virtual_base_seq extends uvm_sequence;
-  `uvm_object_utils(pulpino_spi_master_ip_virtual_base_seq)
+class pulpino_i2c_master_ip_virtual_base_seq extends uvm_sequence;
+  `uvm_object_utils(pulpino_i2c_master_ip_virtual_base_seq)
   
   //Declaring p_sequencer
-  `uvm_declare_p_sequencer(pulpino_spi_master_ip_virtual_sequencer)
+  `uvm_declare_p_sequencer(pulpino_i2c_master_ip_virtual_sequencer)
   
   //variable : apb_master_vsqr_h
   //Declaring handle to the virtual sequencer
   apb_master_sequencer apb_master_seqr_h;
 
-  //variable : spi_slave_vsqr_h
+  //variable : i3c_target_vsqr_h
   //Declaring handle to the virtual sequencer
-  spi_slave_sequencer spi_slave_seqr_h;
+  i3c_target_sequencer i3c_target_seqr_h;
 
   //-------------------------------------------------------
   // Externally defined Tasks and Functions
   //-------------------------------------------------------
-  extern function new(string name = "pulpino_spi_master_ip_virtual_base_seq");
+  extern function new(string name = "pulpino_i2c_master_ip_virtual_base_seq");
   extern task body();
-endclass : pulpino_spi_master_ip_virtual_base_seq
+endclass : pulpino_i2c_master_ip_virtual_base_seq
 
 //--------------------------------------------------------------------------------------------
 // Construct: new
 //
 // Parameters:
-//  name - pulpino_spi_master_ip_virtual_base_seq
+//  name - pulpino_i2c_master_ip_virtual_base_seq
 //--------------------------------------------------------------------------------------------
-function pulpino_spi_master_ip_virtual_base_seq::new(string name = "pulpino_spi_master_ip_virtual_base_seq");
+function pulpino_i2c_master_ip_virtual_base_seq::new(string name = "pulpino_i2c_master_ip_virtual_base_seq");
   super.new(name);
 endfunction : new
 
@@ -41,13 +41,13 @@ endfunction : new
 // Used to connect the master virtual seqr to master seqr
 //
 // Parameters:
-//  name - pulpino_spi_master_ip_virtual_base_seq
+//  name - pulpino_i2c_master_ip_virtual_base_seq
 //--------------------------------------------------------------------------------------------
-task pulpino_spi_master_ip_virtual_base_seq::body();
+task pulpino_i2c_master_ip_virtual_base_seq::body();
   if(!$cast(p_sequencer,m_sequencer))begin
     `uvm_error(get_full_name(),"Virtual sequencer pointer cast failed")
   end
-  spi_slave_seqr_h  = p_sequencer.spi_slave_seqr_h;
+  i3c_target_seqr_h  = p_sequencer.i3c_target_seqr_h;
   apb_master_seqr_h = p_sequencer.apb_master_seqr_h;
 endtask
 

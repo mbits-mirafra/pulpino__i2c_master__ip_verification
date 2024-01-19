@@ -7,7 +7,7 @@ class i3c_target_monitor_proxy extends uvm_component;
   i3c_target_tx tx;
   i3c_target_agent_config i3c_target_agent_cfg_h;
   virtual i3c_target_monitor_bfm i3c_target_mon_bfm_h;
-  uvm_analysis_port #(i3c_target_tx)target_analysis_port;
+  uvm_analysis_port #(i3c_target_tx)i3c_target_analysis_port;
 
   extern function new(string name = "i3c_target_monitor_proxy", uvm_component parent = null);
   extern virtual function void build_phase(uvm_phase phase);
@@ -21,7 +21,7 @@ endclass : i3c_target_monitor_proxy
 function i3c_target_monitor_proxy::new(string name = "i3c_target_monitor_proxy",
                                  uvm_component parent = null);
   super.new(name, parent);
-  target_analysis_port = new("target_analysis_port",this);
+  i3c_target_analysis_port = new("i3c_target_analysis_port",this);
 tx = new();
 endfunction : new
 
@@ -80,7 +80,7 @@ task i3c_target_monitor_proxy::run_phase(uvm_phase phase);
     $cast(tx_packet, tx.clone());
     `uvm_info(get_type_name(),$sformatf("Packet received from sample_data clone packet is \n %s",tx_packet.sprint()),UVM_HIGH)   
 
-    target_analysis_port.write(tx_packet);
+    i3c_target_analysis_port.write(tx_packet);
   end
 
 endtask : run_phase

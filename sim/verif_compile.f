@@ -8,14 +8,14 @@
 +incdir+../../src/dv/hvl_top/test/
 ../../src/dv/globals/apb_master_global_pkg.sv
 ../../src/dv/globals/i3c_target_global_pkg.sv
-../../src/dv/globals/pulpino_spi_master_ip_global_pkg.sv
+../../src/dv/globals/pulpino_i2c_master_ip_global_pkg.sv
 ../../src/dv/hvl_top/apb_master_agent/apb_master_pkg.sv
 ../../src/dv/hvl_top/i3c_target_agent/i3c_target_pkg.sv
 ../../src/dv/hvl_top/test/sequences/master_sequences/apb_master_seq_pkg.sv
 ../../src/dv/hvl_top/i3c_target_agent/i3c_target_sequences/i3c_target_seq_pkg.sv
-#../../src/dv/hvl_top/env/pulpino_spi_master_ip_env_pkg.sv
-#../../src/dv/hvl_top/test/virtual_sequences/pulpino_spi_master_ip_virtual_seq_pkg.sv
-#../../src/dv/hvl_top/test/pulpino_spi_master_ip_test_pkg.sv
+../../src/dv/hvl_top/env/pulpino_i2c_master_ip_env_pkg.sv
+../../src/dv/hvl_top/test/virtual_sequences/pulpino_i2c_master_ip_virtual_seq_pkg.sv
+../../src/dv/hvl_top/test/pulpino_i2c_master_ip_test_pkg.sv
 ../../src/dv/hdl_top/apb_if/apb_if.sv
 ../../src/dv/hdl_top/i3c_if/i3c_if.sv
 ../../src/dv/hdl_top/apb_master_agent_bfm/apb_master_agent_bfm.sv
@@ -25,6 +25,6 @@
 ../../src/dv/hdl_top/i3c_target_agent_bfm/i3c_target_driver_bfm.sv
 ../../src/dv/hdl_top/i3c_target_agent_bfm/i3c_target_monitor_bfm.sv
 ../../src/dv/hdl_top/hdl_top.sv
-#../../src/dv/hvl_top/hvl_top.sv
+../../src/dv/hvl_top/hvl_top.sv
 
 

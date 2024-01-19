@@ -6,7 +6,7 @@ package i3c_target_pkg;
   `include "uvm_macros.svh"
   import uvm_pkg::*;
 
-  import i3c_globals_pkg::*;
+  import i3c_target_global_pkg::*;
 
   `include "i3c_target_agent_config.sv"
   `include "i3c_target_tx.sv"

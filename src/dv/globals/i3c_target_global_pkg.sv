@@ -1,7 +1,7 @@
 `ifndef I3C_GLOBALS_PKG_INCLUDED_
 `define I3C_GLOBALS_PKG_INCLUDED_
 
-package i3c_globals_pkg;
+package i3c_target_global_pkg;
 
   // NO_OF_TARGETS to be connected to the i3c_interface
   parameter int NO_OF_CONTROLLERS = 1;
@@ -58,8 +58,8 @@ package i3c_globals_pkg;
   // READ - READ request 
   // WRITE - WRITE request
   typedef enum bit {
-    WRITE = 1'b0,
-    READ = 1'b1
+    O_WRITE = 1'b0,
+    O_READ = 1'b1
   } operationType_e;
   
   // struct: i3c_bits_transfer_s
@@ -129,7 +129,7 @@ package i3c_globals_pkg;
     NACK = 1'b1
   } acknowledge_e;
 
-endpackage : i3c_globals_pkg 
+endpackage : i3c_target_global_pkg 
 
 `endif
 
