@@ -10,16 +10,12 @@ class pulpino_i2c_master_ip_scoreboard extends uvm_scoreboard;
 
   collector_packet_s apb_data_packet;
 
-
-  //Variable : i3c_target_tx_h
   //Declaring handle for i3c_targetr_tx
   i3c_target_tx i3c_target_tx_h;
   
-  //Variable : apb_master_analysis_fifo
   //Used to store the apb_master_data
   uvm_tlm_analysis_fifo#(collector_packet_s) apb_master_analysis_fifo;
 
-  //Variable : i3c_target_analysis_fifo
   //Used to store the i3c_target_data
   uvm_tlm_analysis_fifo#(i3c_target_tx) i3c_target_analysis_fifo;
   //uvm_tlm_analysis_fifo#(target_tx) i3c_target_analysis_fifo[NO_OF_TARGETS];

@@ -28,9 +28,6 @@ class pulpino_i2c_master_ip_env_config extends uvm_object;
   // Dynamic array of target agnet configuration handles
   i3c_target_agent_config i3c_target_agent_cfg_h[];
 
-  // Variable: i2c_master_reg_block
-  // Registers block handle for i2c master module
- // GopalS:  i2c_master_apb_if i2c_master_reg_block;
 
   //-------------------------------------------------------
   // Externally defined Tasks and Functions
