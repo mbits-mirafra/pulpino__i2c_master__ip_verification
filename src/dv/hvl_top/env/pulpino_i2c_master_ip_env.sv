@@ -25,11 +25,11 @@ class pulpino_i2c_master_ip_env extends uvm_env;
   
   // Variable: apb_master_coll_h;
   // Handle for apb master collector
-  apb_master_collector apb_master_coll_h;
+  // GopalS: apb_master_collector apb_master_coll_h;
 
   // Variable: i3c_target_coll_h;
   // Handle for i3c target collector
-  i3c_target_collector i3c_target_coll_h;
+  // GopalS: i3c_target_collector i3c_target_coll_h;
 
 
   extern function new(string name = "pulpino_i2c_master_ip_env", uvm_component parent = null);
@@ -66,8 +66,8 @@ function void pulpino_i2c_master_ip_env::build_phase(uvm_phase phase);
     pulpino_i2c_master_ip_scoreboard_h = pulpino_i2c_master_ip_scoreboard::type_id::create("pulpino_i2c_master_ip_scoreboard_h",this);
   end
 
-  apb_master_coll_h = apb_master_collector::type_id::create("apb_master_coll_h",this);
-  i3c_target_coll_h  = i3c_target_collector::type_id::create("i3c_target_coll_h",this);
+  // GopalS: apb_master_coll_h = apb_master_collector::type_id::create("apb_master_coll_h",this);
+  // GopalS: i3c_target_coll_h  = i3c_target_collector::type_id::create("i3c_target_coll_h",this);
 
 endfunction : build_phase
 
@@ -88,7 +88,7 @@ function void pulpino_i2c_master_ip_env::connect_phase(uvm_phase phase);
 
     pulpino_i2c_master_ip_virtual_seqr_h.env_config_h = pulpino_i2c_master_ip_env_config_h; 
   end
-  
+ /* 
   apb_master_agent_h.apb_master_mon_proxy_h.apb_master_analysis_port.connect(apb_master_coll_h.apb_master_coll_imp_port);
   foreach(i3c_target_agent_h[i]) begin
     i3c_target_agent_h[i].i3c_target_mon_proxy_h.i3c_target_analysis_port.connect(i3c_target_coll_h.i3c_target_coll_imp_port);
@@ -96,7 +96,12 @@ function void pulpino_i2c_master_ip_env::connect_phase(uvm_phase phase);
 
   apb_master_coll_h.apb_master_coll_analysis_port.connect(pulpino_i2c_master_ip_scoreboard_h.apb_master_analysis_fifo.analysis_export);
   i3c_target_coll_h.i3c_target_coll_analysis_port.connect(pulpino_i2c_master_ip_scoreboard_h.i3c_target_analysis_fifo.analysis_export);
-  
+  */
+
+  apb_master_agent_h.apb_master_mon_proxy_h.apb_master_analysis_port.connect(pulpino_i2c_master_ip_scoreboard_h.apb_master_analysis_fifo.analysis_export);
+  foreach(i3c_target_agent_h[i]) begin
+    i3c_target_agent_h[i].i3c_target_mon_proxy_h.i3c_target_analysis_port.connect(pulpino_i2c_master_ip_scoreboard_h.i3c_target_analysis_fifo.analysis_export);
+  end
 endfunction : connect_phase
 
 `endif

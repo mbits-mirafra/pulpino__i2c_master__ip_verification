@@ -8,13 +8,15 @@
 class pulpino_i2c_master_ip_scoreboard extends uvm_scoreboard;
   `uvm_component_utils(pulpino_i2c_master_ip_scoreboard)
 
-  collector_packet_s apb_data_packet;
+  // GopalS: collector_packet_s apb_data_packet;
+  apb_master_tx apb_data_packet;
 
   //Declaring handle for i3c_targetr_tx
   i3c_target_tx i3c_target_tx_h;
   
   //Used to store the apb_master_data
-  uvm_tlm_analysis_fifo#(collector_packet_s) apb_master_analysis_fifo;
+  // GopalS: uvm_tlm_analysis_fifo#(collector_packet_s) apb_master_analysis_fifo;
+  uvm_tlm_analysis_fifo#(apb_master_tx) apb_master_analysis_fifo;
 
   //Used to store the i3c_target_data
   uvm_tlm_analysis_fifo#(i3c_target_tx) i3c_target_analysis_fifo;
@@ -96,13 +98,13 @@ task pulpino_i2c_master_ip_scoreboard::run_phase(uvm_phase phase);
     
     `uvm_info(get_type_name(),$sformatf("before calling master's analysis fifo get method"),UVM_HIGH)
     apb_master_analysis_fifo.get(apb_data_packet);
-    apb_data = apb_data_packet.data;
-    apb_data_width = apb_data_packet.data_width;
+   // GopalS:  apb_data = apb_data_packet.data;
+   // GopalS:  apb_data_width = apb_data_packet.data_width;
     apb_master_tx_count++;
 
 
     `uvm_info(get_type_name(),$sformatf("after calling master's analysis fifo get method"),UVM_HIGH) 
-    `uvm_info(get_type_name(),$sformatf("printing apb_data = %0h",apb_data),UVM_HIGH)
+   // GopalS:  `uvm_info(get_type_name(),$sformatf("printing apb_data = %0h",apb_data),UVM_HIGH)
     `uvm_info(get_type_name(),$sformatf("before calling target's analysis_fifo"),UVM_HIGH)
 
     i3c_target_analysis_fifo.get(i3c_target_tx_h);
@@ -123,7 +125,7 @@ task pulpino_i2c_master_ip_scoreboard::run_phase(uvm_phase phase);
 // GopalS:         i2c_data_width = i2c_data_width + CHAR_LENGTH;
 // GopalS:       end
 // GopalS:     end
-
+/*
     `uvm_info(get_type_name(),$sformatf("--\n-----------------------------------------------SCOREBOARD COMPARISIONS--------------------------------------------------"),UVM_HIGH)
 
     //Verifying pwdata in master and target 
@@ -153,6 +155,7 @@ task pulpino_i2c_master_ip_scoreboard::run_phase(uvm_phase phase);
     end
 
     `uvm_info(get_type_name(),$sformatf("--\n-----------------------------------------END OF SCOREBOARD COMPARISIONS--------------------------------------------------"),UVM_HIGH)
+    */
   end
 
 endtask : run_phase

@@ -31,8 +31,8 @@ package pulpino_i2c_master_ip_env_pkg;
 // GopalS:   `include "apb_reg_predictor.sv"
    `include "pulpino_i2c_master_ip_virtual_sequencer.sv"
    `include "pulpino_i2c_master_ip_scoreboard.sv"
-   `include "apb_master_collector.sv"
-   `include "i3c_target_collector.sv"
+// GopalS:    `include "apb_master_collector.sv"
+// GopalS:    `include "i3c_target_collector.sv"
    `include "pulpino_i2c_master_ip_env.sv"
 
 endpackage : pulpino_i2c_master_ip_env_pkg
