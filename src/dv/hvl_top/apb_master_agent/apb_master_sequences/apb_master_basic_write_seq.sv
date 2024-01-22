@@ -44,7 +44,7 @@ task apb_master_basic_write_seq::body();
   start_item(req);
   if(!req.randomize() with {req.pselx == SLAVE_0;
                             req.paddr == 32'h1A10_5004;
-                            req.pwdata == 32'h0010_1010;  
+                            req.pwdata == 32'h0010_1080;  
                             req.transfer_size == BIT_32;
                             req.cont_write_read == 0;
                             req.pwrite == WRITE;}) begin : CTRL
@@ -83,7 +83,7 @@ task apb_master_basic_write_seq::body();
   start_item(req);
   if(!req.randomize() with {req.pselx == SLAVE_0;
                             req.paddr == 32'h1A10_5010;
-                            req.pwdata == 32'h0008_0000;  
+                            req.pwdata == 32'h0008_0090;  
                             req.transfer_size == BIT_32;
                             req.cont_write_read == 0;
                             req.pwrite == WRITE;}) begin : COMMAND
@@ -96,7 +96,7 @@ task apb_master_basic_write_seq::body();
   start_item(req);
   if(!req.randomize() with {req.pselx == SLAVE_0;
                             req.paddr == 32'h1A10_5014;
-                            req.pwdata == 32'hf000_f01A;  
+                            req.pwdata == 32'hf000_0010;  
                             req.transfer_size == BIT_32;
                             req.cont_write_read == 0;
                             req.pwrite == WRITE;}) begin : STATUS_REG
