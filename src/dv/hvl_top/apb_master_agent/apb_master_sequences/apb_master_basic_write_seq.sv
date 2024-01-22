@@ -57,7 +57,7 @@ task apb_master_basic_write_seq::body();
   start_item(req);
   if(!req.randomize() with {req.pselx == SLAVE_0;
                             req.paddr == 32'h1A10_5008;
-                            req.pwdata == 32'hffff_ffff;  
+                            req.pwdata == 32'hffff_0068;  
                             req.transfer_size == BIT_32;
                             req.cont_write_read == 0;
                             req.pwrite == WRITE;}) begin : TXREG
@@ -82,7 +82,7 @@ task apb_master_basic_write_seq::body();
 
   start_item(req);
   if(!req.randomize() with {req.pselx == SLAVE_0;
-                            req.paddr == 32'h1A10_5010;
+                            req.paddr == 32'h1A10_5091;
                             req.pwdata == 32'h0008_0090;  
                             req.transfer_size == BIT_32;
                             req.cont_write_read == 0;

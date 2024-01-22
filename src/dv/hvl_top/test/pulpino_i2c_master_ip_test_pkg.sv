@@ -34,6 +34,7 @@ package pulpino_i2c_master_ip_test_pkg;
   //-------------------------------------------------------
   `include "pulpino_i2c_master_ip_base_test.sv"
   `include "pulpino_i2c_master_ip_basic_write_test.sv"
+  `include "pulpino_i2c_master_ip_basic_read_test.sv"
 
   // MSHA: `include "pulpino_i2c_master_ip_basic_write_test.sv"
   // MSHA: `include "pulpino_i2c_master_ip_basic_read_test.sv"

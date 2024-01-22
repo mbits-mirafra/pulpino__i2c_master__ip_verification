@@ -123,7 +123,7 @@ module apb_i2c
                 r_cmd[0]   <= 1'b0;               // clear IRQ_ACK bit
             end
     end //always
-
+/*
     always_comb
     begin
         case (s_apb_addr)
@@ -143,6 +143,27 @@ module apb_i2c
                 PRDATA = 'h0;
         endcase
     end
+  */
+ always_comb
+    begin
+        case (s_apb_addr)
+            `REG_CLK_PRESCALER:
+                PRDATA = {16'h0,r_pre};
+            `REG_CTRL:
+                PRDATA = {24'h0,r_ctrl};
+            `REG_TX:    
+                PRDATA = {24'h0,r_tx};
+            `REG_RX:
+                PRDATA = {24'h0,s_rx};
+            `REG_CMD:
+                PRDATA = {24'h0,r_cmd};
+            `REG_STATUS: 
+                PRDATA = {24'h0,s_status};
+            default:
+                PRDATA = 'h0;
+        endcase
+    end
+
 
     // decode command register
     wire sta  = r_cmd[7];
