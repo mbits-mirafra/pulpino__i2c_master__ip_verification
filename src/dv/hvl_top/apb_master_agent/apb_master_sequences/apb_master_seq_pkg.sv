@@ -21,6 +21,7 @@ package apb_master_seq_pkg;
   `include "apb_master_base_seq.sv"
   `include "apb_master_basic_write_seq.sv"
   `include "apb_master_basic_read_seq.sv"
+  `include "apb_master_basic_transaction_seq.sv"
   `include "apb_master_std_read_seq.sv"
 
   `include "apb_master_std_mode_write_0_cmd_0_addr_32_data_length_seq.sv"
