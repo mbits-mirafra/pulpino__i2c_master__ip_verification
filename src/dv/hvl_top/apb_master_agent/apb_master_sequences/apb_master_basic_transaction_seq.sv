@@ -40,18 +40,27 @@ task apb_master_basic_transaction_seq::body();
   `uvm_info(clkPrescale_reg,$sformatf("clkPrescale_reg_seq = \n %0p",req.sprint()),UVM_MEDIUM)
   finish_item(req);
 
+  begin
+    bit[6:0] targetAddress = 7'h68;
+    bit operation = 0; // 0 means write
+    bit [31:0] data;
 
-  start_item(req);
-  if(!req.randomize() with {req.pselx == SLAVE_0;
-                            req.paddr == 32'h1A10_5008;
-                            req.pwdata == 32'hffff_0068;  
-                            req.transfer_size == BIT_32;
-                            req.cont_write_read == 0;
-                            req.pwrite == WRITE;}) begin : TXREG
-    `uvm_fatal("APB","Rand failed");
+    data = {24'h0,targetAddress, operation};  
+    //D0 for write 
+    //D1 for read
+
+    start_item(req);
+    if(!req.randomize() with {req.pselx == SLAVE_0;
+                              req.paddr == 32'h1A10_5008;
+                              req.pwdata == data;  
+                              req.transfer_size == BIT_32;
+                              req.cont_write_read == 0;
+                              req.pwrite == WRITE;}) begin : TXREG
+      `uvm_fatal("APB","Rand failed");
+    end
+    `uvm_info(tx_reg,$sformatf("tx_reg_seq = \n %0p",req.sprint()),UVM_MEDIUM)
+    finish_item(req);
   end
-  `uvm_info(tx_reg,$sformatf("tx_reg_seq = \n %0p",req.sprint()),UVM_MEDIUM)
-  finish_item(req);
 
 
   start_item(req);
