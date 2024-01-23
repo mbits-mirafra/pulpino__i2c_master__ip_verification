@@ -318,8 +318,8 @@ module i2c_master_bit_ctrl
     always @(posedge clk or negedge nReset)
       if (~nReset)
           al <= 1'b0;
-      else
-          al <= (sda_chk & ~sSDA & sda_oen) | (|c_state & sto_condition & ~cmd_stop);
+      // MSHA: else
+      // MSHA:     al <= (sda_chk & ~sSDA & sda_oen) | (|c_state & sto_condition & ~cmd_stop);
 
 
     // generate dout signal (store SDA on rising edge of SCL)

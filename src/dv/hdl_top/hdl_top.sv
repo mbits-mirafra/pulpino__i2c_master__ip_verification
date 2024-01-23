@@ -115,6 +115,12 @@ module hdl_top;
                     .SCL(I3C_SCL),
                     .SDA(I3C_SDA));
 
+  assign intf_target.SCL = (intf_target.scl_oen) ? intf_target.scl_o : 1'bz;
+  assign intf_target.SDA = (intf_target.sda_oen) ? intf_target.sda_o : 1'bz;
+
+  assign intf_controller.SCL = (!intf_controller.scl_oen) ? intf_controller.scl_o : 1'bz;
+  assign intf_controller.SDA = (!intf_controller.sda_oen) ? intf_controller.sda_o : 1'bz;
+
   //-------------------------------------------------------
   // I3C target BFM Agent Instantiation
   //-------------------------------------------------------

@@ -22,8 +22,11 @@ interface i3c_if(input pclk, input areset, inout SCL, inout SDA);
 	logic sda_oen; 
   
   // Tri-state buffer implementation 
-  assign SCL = (scl_oen) ? scl_o : 1'bz;
-  assign SDA = (sda_oen) ? sda_o : 1'bz;
+  // MSHA: assign SCL = (scl_oen) ? scl_o : 1'bz;
+  // MSHA: assign SDA = (sda_oen) ? sda_o : 1'bz;
+
+  // MSHA:assign SCL = (!scl_oen) ? scl_o : 1'bz;
+  // MSHA:assign SDA = (!sda_oen) ? sda_o : 1'bz;
 
   // Used for sampling the I3C interface signals
   assign scl_i = SCL;
