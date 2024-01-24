@@ -67,7 +67,7 @@ interface i3c_target_driver_bfm(input pclk,
     driveAddressAck(dataPacketStruck.targetAddressStatus);
 
     if(dataPacketStruck.targetAddressStatus == ACK) begin
-      if(dataPacketStruck.operation == O_WRITE) begin
+      if(dataPacketStruck.operation == WRITE) begin
         sampleWriteDataAndDriveACK(dataPacketStruck,
                                    configPacketStruck);
       end else begin
@@ -172,9 +172,9 @@ interface i3c_target_driver_bfm(input pclk,
     drive_sda(1);
 
     if(operation == 1'b0) begin
-      wr_rd = O_WRITE;
+      wr_rd = WRITE;
     end else begin
-      wr_rd = O_READ;
+      wr_rd = READ;
     end
   endtask: sample_operation
 

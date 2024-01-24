@@ -49,7 +49,7 @@ interface i3c_target_monitor_bfm(input pclk,
     sample_operation(struct_packet.operation);
     sampleAddressAck(struct_packet.targetAddressStatus);
     if(struct_packet.targetAddressStatus == ACK) begin
-      if(struct_packet.operation == O_WRITE) begin
+      if(struct_packet.operation == WRITE) begin
         sampleWriteDataAndACK(struct_packet, struct_cfg);
       end else begin
         sampleReadDataAndACK(struct_packet, struct_cfg);
@@ -129,9 +129,9 @@ interface i3c_target_monitor_bfm(input pclk,
     detectEdge_scl(POSEDGE);
     operation = sda_i;
    if(operation == 0)
-     wr_rd = O_WRITE;
+     wr_rd = WRITE;
    else
-     wr_rd = O_READ;
+     wr_rd = READ;
   endtask: sample_operation
   
 

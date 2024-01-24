@@ -19,10 +19,10 @@
 */
 `define REG_CLK_PRESCALER 3'b000 //BASEADDR+0x00
 `define REG_CTRL          3'b001 //BASEADDR+0x04
-`define REG_TX            3'b010 //BASEADDR+0x10
-`define REG_RX            3'b011 //BASEADDR+0x08
-`define REG_CMD           3'b100 //BASEADDR+0x14
-`define REG_STATUS        3'b101 //BASEADDR+0x0C
+`define REG_TX            3'b010 //BASEADDR+0x08
+`define REG_RX            3'b011 //BASEADDR+0x0c
+`define REG_CMD           3'b100 //BASEADDR+0x10
+`define REG_STATUS        3'b101 //BASEADDR+0x14
 
 module apb_i2c
 #(

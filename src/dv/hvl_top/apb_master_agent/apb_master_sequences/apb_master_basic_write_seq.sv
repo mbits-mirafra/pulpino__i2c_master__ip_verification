@@ -82,7 +82,7 @@ task apb_master_basic_write_seq::body();
 
   start_item(req);
   if(!req.randomize() with {req.pselx == SLAVE_0;
-                            req.paddr == 32'h1A10_5091;
+                            req.paddr == 32'h1A10_5010;
                             req.pwdata == 32'h0008_0090;  
                             req.transfer_size == BIT_32;
                             req.cont_write_read == 0;

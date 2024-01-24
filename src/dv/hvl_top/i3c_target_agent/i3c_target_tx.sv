@@ -83,7 +83,7 @@ function void i3c_target_tx::do_print(uvm_printer printer);
   printer.print_string($sformatf("targetAddressStatus"),targetAddressStatus.name());
   printer.print_string($sformatf("operation"),operation.name());
 
-  if(operation == O_WRITE) begin
+  if(operation == WRITE) begin
     foreach(writeData[i]) begin
       printer.print_field($sformatf("writeData[%0d]",i),this.writeData[i],$bits(writeData[i]),UVM_HEX);
     end

@@ -58,8 +58,8 @@ package i3c_target_global_pkg;
   // READ - READ request 
   // WRITE - WRITE request
   typedef enum bit {
-    O_WRITE = 1'b0,
-    O_READ = 1'b1
+    WRITE = 1'b0,
+    READ = 1'b1
   } operationType_e;
   
   // struct: i3c_bits_transfer_s

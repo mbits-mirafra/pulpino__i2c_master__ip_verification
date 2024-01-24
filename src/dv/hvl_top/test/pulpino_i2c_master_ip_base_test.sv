@@ -129,6 +129,7 @@ function void pulpino_i2c_master_ip_base_test::setup_i3c_target_agent_config();
    pulpino_i2c_master_ip_env_cfg_h.i3c_target_agent_cfg_h[i].isActive    = uvm_active_passive_enum'(UVM_ACTIVE);
    pulpino_i2c_master_ip_env_cfg_h.i3c_target_agent_cfg_h[i].dataTransferDirection   = dataTransferDirection_e'(MSB_FIRST);
     pulpino_i2c_master_ip_env_cfg_h.i3c_target_agent_cfg_h[i].hasCoverage = hasCoverage_e'(TRUE);
+  pulpino_i2c_master_ip_env_cfg_h.i3c_target_agent_cfg_h[i].targetAddress = TARGET0_ADDRESS;
 
     //pulpino_i2c_master_ip_env_cfg_h.pulpino_i2c_master_ip_slave_agent_cfg_h[i].min_address    = pulpino_i2c_master_ip_env_cfg_h.apb_master_agent_cfg_h.master_min_addr_range_array[i];
     //pulpino_i2c_master_ip_env_cfg_h.pulpino_i2c_master_ip_slave_agent_cfg_h[i].max_address    = pulpino_i2c_master_ip_env_cfg_h.apb_master_agent_cfg_h.master_max_addr_range_array[i];
