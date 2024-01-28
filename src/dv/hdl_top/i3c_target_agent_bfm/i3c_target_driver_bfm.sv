@@ -254,6 +254,7 @@ interface i3c_target_driver_bfm(input pclk,
 
     do begin
       @(negedge pclk);
+      #1;
       scl_local = {scl_local[0], scl_i};
       sda_local = {sda_local[0], sda_i};
     end while(!(sda_local == POSEDGE && scl_local == 2'b11) );

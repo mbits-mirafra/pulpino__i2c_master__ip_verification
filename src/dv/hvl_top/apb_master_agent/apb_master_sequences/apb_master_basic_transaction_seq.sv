@@ -87,8 +87,8 @@ task apb_master_basic_transaction_seq::body();
   `uvm_info(command_reg,$sformatf("command_reg_seq = \n %0p",req.sprint()),UVM_MEDIUM)
   finish_item(req);
 
-  #200;
-/*
+  #2800;
+
   start_item(req);
   if(!req.randomize() with {req.pselx == SLAVE_0;
                             req.paddr == 32'h1A10_5000;
@@ -100,9 +100,9 @@ task apb_master_basic_transaction_seq::body();
   end
   `uvm_info(clkPrescale_reg,$sformatf("clkPrescale_reg_seq = \n %0p",req.sprint()),UVM_MEDIUM)
   finish_item(req);
-*/
+
   begin
-    bit[7:0] writeData = 8'hAA;
+    bit[7:0] writeData = 8'hAC;
     bit [31:0] data;
 
     data = {24'h0,writeData};  
@@ -120,7 +120,7 @@ task apb_master_basic_transaction_seq::body();
     finish_item(req);
   end
 
-/*
+
   start_item(req);
   if(!req.randomize() with {req.pselx == SLAVE_0;
                             req.paddr == 32'h1A10_5004;
@@ -132,7 +132,7 @@ task apb_master_basic_transaction_seq::body();
   end
   `uvm_info(control_reg,$sformatf("control_reg_seq = \n %0p",req.sprint()),UVM_MEDIUM)
   finish_item(req);
-*/
+
 
   start_item(req);
   if(!req.randomize() with {req.pselx == SLAVE_0;

@@ -29,11 +29,11 @@ task apb_master_basic_read_seq::body();
   req=apb_master_tx::type_id::create("req");
   req.apb_master_agent_cfg_h = p_sequencer.apb_master_agent_cfg_h;
 
-/*  
+
   start_item(req);
   if(!req.randomize() with {req.pselx == SLAVE_0;
                             req.paddr == 32'h1A10_5000;
-                            req.pwdata == 32'h0000_0006;  
+                            req.pwdata == 32'h0000_0001;  
                             req.transfer_size == BIT_32;
                             req.cont_write_read == 0;
                             req.pwrite == WRITE;}) begin : CPR
@@ -42,11 +42,33 @@ task apb_master_basic_read_seq::body();
   `uvm_info(clkPrescale_reg,$sformatf("clkPrescale_reg_seq = \n %0p",req.sprint()),UVM_MEDIUM)
   finish_item(req);
 
+  begin
+    bit[6:0] targetAddress = 7'h68;
+    bit operation = 1; // 1 means read
+    bit [31:0] data;
+
+    data = {24'h0,targetAddress, operation};  
+    //D0 for write 
+    //D1 for read
+
+    start_item(req);
+    if(!req.randomize() with {req.pselx == SLAVE_0;
+                              req.paddr == 32'h1A10_5008;
+                              req.pwdata == data;  
+                              req.transfer_size == BIT_32;
+                              req.cont_write_read == 0;
+                              req.pwrite == WRITE;}) begin : TXREG
+      `uvm_fatal("APB","Rand failed");
+    end
+    `uvm_info(tx_reg,$sformatf("tx_reg_seq = \n %0p",req.sprint()),UVM_MEDIUM)
+    finish_item(req);
+  end
+
 
   start_item(req);
   if(!req.randomize() with {req.pselx == SLAVE_0;
                             req.paddr == 32'h1A10_5004;
-                            req.pwdata == 32'h0010_1080;  
+                            req.pwdata == 32'h0000_00C0;  
                             req.transfer_size == BIT_32;
                             req.cont_write_read == 0;
                             req.pwrite == WRITE;}) begin : CTRL
@@ -55,37 +77,10 @@ task apb_master_basic_read_seq::body();
   `uvm_info(control_reg,$sformatf("control_reg_seq = \n %0p",req.sprint()),UVM_MEDIUM)
   finish_item(req);
 
-
   start_item(req);
   if(!req.randomize() with {req.pselx == SLAVE_0;
-                            req.paddr == 32'h1A10_5008;
-                            req.pwdata == 32'hffff_0068;  
-                            req.transfer_size == BIT_32;
-                            req.cont_write_read == 0;
-                            req.pwrite == WRITE;}) begin : TXREG
-    `uvm_fatal("APB","Rand failed");
-  end
-  `uvm_info(tx_reg,$sformatf("tx_reg_seq = \n %0p",req.sprint()),UVM_MEDIUM)
-  finish_item(req);
-*/
-
-  start_item(req);
-  if(!req.randomize() with {req.pselx == SLAVE_0;
-                            req.paddr == 32'h1A10_500c;
-//                          req.pwdata == 32'h0fA9_ffff;  
-                            req.transfer_size == BIT_32;
-                            req.cont_write_read == 1;
-                            req.pwrite == READ;}) begin : RXREG
-    `uvm_fatal("APB","Rand failed");
-  end
-  `uvm_info(rx_reg,$sformatf("rx_reg_seq = \n %0p",req.sprint()),UVM_MEDIUM)
-  finish_item(req);
-/* 
-
-  start_item(req);
-  if(!req.randomize() with {req.pselx == SLAVE_0;
-                            req.paddr == 32'h1A10_5091;
-                            req.pwdata == 32'h0008_0090;  
+                            req.paddr == 32'h1A10_5010;
+                            req.pwdata == 32'h0000_0090;  
                             req.transfer_size == BIT_32;
                             req.cont_write_read == 0;
                             req.pwrite == WRITE;}) begin : COMMAND
@@ -94,20 +89,58 @@ task apb_master_basic_read_seq::body();
   `uvm_info(command_reg,$sformatf("command_reg_seq = \n %0p",req.sprint()),UVM_MEDIUM)
   finish_item(req);
 
+  #2800;
 
   start_item(req);
   if(!req.randomize() with {req.pselx == SLAVE_0;
-                            req.paddr == 32'h1A10_5014;
-                            req.pwdata == 32'hf000_0010;  
+                            req.paddr == 32'h1A10_5000;
+                            req.pwdata == 32'h0000_0001;  
                             req.transfer_size == BIT_32;
                             req.cont_write_read == 0;
-                            req.pwrite == WRITE;}) begin : STATUS_REG
+                            req.pwrite == WRITE;}) begin : CPR_W
     `uvm_fatal("APB","Rand failed");
   end
-  `uvm_info(status_reg,$sformatf("status_reg_seq = \n %0p",req.sprint()),UVM_MEDIUM)
+  `uvm_info(clkPrescale_reg,$sformatf("clkPrescale_reg_seq = \n %0p",req.sprint()),UVM_MEDIUM)
   finish_item(req);
 
-*/
+
+    start_item(req);
+    if(!req.randomize() with {req.pselx == SLAVE_0;
+                              req.paddr == 32'h1A10_500C;
+                              req.transfer_size == BIT_32;
+                              req.cont_write_read == 0;
+                              req.pwrite == READ;}) begin : RXREG_W
+      `uvm_fatal("APB","Rand failed");
+    end
+    `uvm_info(tx_reg,$sformatf("tx_reg_seq = \n %0p",req.sprint()),UVM_MEDIUM)
+    finish_item(req);
+
+
+  start_item(req);
+  if(!req.randomize() with {req.pselx == SLAVE_0;
+                            req.paddr == 32'h1A10_5004;
+                            req.pwdata == 32'h0000_00C0;  
+                            req.transfer_size == BIT_32;
+                            req.cont_write_read == 0;
+                            req.pwrite == WRITE;}) begin : CTRL_W
+    `uvm_fatal("APB","Rand failed");
+  end
+  `uvm_info(control_reg,$sformatf("control_reg_seq = \n %0p",req.sprint()),UVM_MEDIUM)
+  finish_item(req);
+
+
+  start_item(req);
+  if(!req.randomize() with {req.pselx == SLAVE_0;
+                            req.paddr == 32'h1A10_5010;
+                            req.pwdata == 32'h0000_0068;  
+                            req.transfer_size == BIT_32;
+                            req.cont_write_read == 0;
+                            req.pwrite == WRITE;}) begin : COMMAND_W
+    `uvm_fatal("APB","Rand failed");
+  end
+  `uvm_info(command_reg,$sformatf("command_reg_seq = \n %0p",req.sprint()),UVM_MEDIUM)
+  finish_item(req);
+
 endtask : body
 
 `endif
