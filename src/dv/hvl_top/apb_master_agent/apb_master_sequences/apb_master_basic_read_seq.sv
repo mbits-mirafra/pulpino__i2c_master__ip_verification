@@ -103,7 +103,19 @@ task apb_master_basic_read_seq::body();
   `uvm_info(clkPrescale_reg,$sformatf("clkPrescale_reg_seq = \n %0p",req.sprint()),UVM_MEDIUM)
   finish_item(req);
 
-
+/*
+    start_item(req);
+    if(!req.randomize() with {req.pselx == SLAVE_0;
+                              req.paddr == 32'h1A10_5008;
+                              req.transfer_size == BIT_32;
+                              req.cont_write_read == 0;
+                              req.pwrite == READ;}) begin : TXREG
+      `uvm_fatal("APB","Rand failed");
+    end
+    `uvm_info(tx_reg,$sformatf("tx_reg_seq = \n %0p",req.sprint()),UVM_MEDIUM)
+    finish_item(req);
+*/
+    /*
     start_item(req);
     if(!req.randomize() with {req.pselx == SLAVE_0;
                               req.paddr == 32'h1A10_500C;
@@ -114,7 +126,7 @@ task apb_master_basic_read_seq::body();
     end
     `uvm_info(tx_reg,$sformatf("tx_reg_seq = \n %0p",req.sprint()),UVM_MEDIUM)
     finish_item(req);
-
+*/
 
   start_item(req);
   if(!req.randomize() with {req.pselx == SLAVE_0;

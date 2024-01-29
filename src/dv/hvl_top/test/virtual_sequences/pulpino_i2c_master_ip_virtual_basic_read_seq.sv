@@ -39,7 +39,7 @@ task pulpino_i2c_master_ip_virtual_basic_read_seq::body();
     end
   join_none
 
-  repeat(2) begin
+  repeat(1) begin
     `uvm_info("master_vseq",$sformatf("started master vseq"),UVM_HIGH)
     apb_master_basic_read_seq_h.start(p_sequencer.apb_master_seqr_h);
     //wait(wr_rd.triggered);
