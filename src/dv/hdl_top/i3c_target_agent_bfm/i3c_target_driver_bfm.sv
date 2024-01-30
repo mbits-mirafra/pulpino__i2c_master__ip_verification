@@ -25,7 +25,7 @@ interface i3c_target_driver_bfm(input pclk,
   // Creating the memory
   //-------------------------------------------------------
   bit [DATA_WIDTH-1:0]targetFIFOMemory[$];
-
+ 
   string name = "I3C_TARGET_DRIVER_BFM";
   initial begin
     $display(name);
@@ -222,15 +222,15 @@ interface i3c_target_driver_bfm(input pclk,
 
 
   task drive_read_data(input bit[7:0] rdata,inout i3c_transfer_bits_s pkt,input int i, input dataTransferDirection_e dir);
-
+   bit [1:0] scl_local;
     `uvm_info("DEBUG", $sformatf("Driving byte = %0b",rdata), UVM_NONE)
     state = READ_DATA;
     for(int k=0, bit_no = 0; k<DATA_WIDTH; k++) begin
       // Logic for MSB first or LSB first 
       bit_no = (dir == MSB_FIRST) ? 
                 ((DATA_WIDTH - 1) - k) : k;
-
-      detectEdge_scl(,NEGEDGE);
+      
+      detectEdge_scl(scl_local,NEGEDGE);
       drive_sda(rdata[bit_no]);
       pkt.no_of_i3c_bits_transfer++;
     end
