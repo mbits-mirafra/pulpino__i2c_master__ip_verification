@@ -87,14 +87,12 @@ task apb_master_basic_write_seq::body();
   `uvm_info(command_reg,$sformatf("command_reg_seq = \n %0p",req.sprint()),UVM_MEDIUM)
   finish_item(req);
 
-//  #2800;
 
 do 
  begin
  start_item(req);
  if(!req.randomize() with {req.pselx == SLAVE_0;
                             req.paddr == 32'h1A10_5014;
-                           // req.pwdata == 32'h0000_0090;  
                             req.transfer_size == BIT_32;
                             req.cont_write_read == 0;
                             req.pwrite == READ;}) begin : STATUS
@@ -102,7 +100,6 @@ do
   end
   `uvm_info(status_reg,$sformatf("status_reg_seq = \n %0p",req.sprint()),UVM_MEDIUM)
  finish_item(req);
- `uvm_info("",$sformatf("swamy prdata : \n %0d",req.prdata),UVM_MEDIUM)
  end
  while(req.prdata[1]==1); 
  
