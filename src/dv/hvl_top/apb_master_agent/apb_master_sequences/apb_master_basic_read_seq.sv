@@ -15,6 +15,8 @@ class apb_master_basic_read_seq extends apb_master_base_seq;
   string command_reg     = "COMMAND_REG_SEQ";
   string status_reg      = "STATUS_REG_SEQ";
  
+  bit[7:0] receivedData;
+
   extern function new(string name ="apb_master_basic_read_seq");
   extern task body();
 
@@ -97,7 +99,7 @@ task apb_master_basic_read_seq::body();
                            // req.pwdata == 32'h0000_0090;  
                             req.transfer_size == BIT_32;
                             req.cont_write_read == 0;
-                            req.pwrite == READ;}) begin : STATUS
+                            req.pwrite == READ;}) begin : STATUS_FOR_ADDRESS
  `uvm_fatal("APB","Rand failed");
   end
   `uvm_info(status_reg,$sformatf("status_reg_seq = \n %0p",req.sprint()),UVM_MEDIUM)
@@ -143,6 +145,21 @@ task apb_master_basic_read_seq::body();
   `uvm_info(command_reg,$sformatf("command_reg_seq = \n %0p",req.sprint()),UVM_MEDIUM)
   finish_item(req);
 
+   do 
+    begin
+   start_item(req);
+   if(!req.randomize() with {req.pselx == SLAVE_0;
+                              req.paddr == 32'h1A10_5014;
+                             // req.pwdata == 32'h0000_0090;  
+                              req.transfer_size == BIT_32;
+                              req.cont_write_read == 0;
+                              req.pwrite == READ;}) begin : STATUS_FOR_READ
+   `uvm_fatal("APB","Rand failed");
+    end
+    `uvm_info(status_reg,$sformatf("status_reg_seq = \n %0p",req.sprint()),UVM_MEDIUM)
+   finish_item(req);
+   end
+   while(req.prdata[1]==1); 
 
     start_item(req);
     if(!req.randomize() with {req.pselx == SLAVE_0;
@@ -154,6 +171,7 @@ task apb_master_basic_read_seq::body();
     end
     `uvm_info(tx_reg,$sformatf("tx_reg_seq = \n %0p",req.sprint()),UVM_MEDIUM)
     finish_item(req);
+    receivedData = req.prdata;
 
 endtask : body
 
