@@ -12,6 +12,7 @@ IP Veriification of I2C master using the I3C VIP
 
 
 # Testbench Architecture Diagram
+![image](https://github.com/mbits-mirafra/pulpino__i2c_master__ip_verification/assets/106074838/260bce85-a998-405b-9d80-e1af5ad8774f)
 
 
 # Developers, Welcome
@@ -65,10 +66,7 @@ ex: make regression testlist_name=pulpino_i2c_master_ip_verification_regression.
 
 ```
 
-
-
 ```
-
 ### Using Cadence's Xcelium simulator 
 
 ```
@@ -94,6 +92,7 @@ ex: make regression testlist_name=pulpino_i2c_master_ip_verification_regression.
 
 # Coverage:   
 imc -load cov_work/scope/test/ &
+
 ```
 
 ## Technical Document 
