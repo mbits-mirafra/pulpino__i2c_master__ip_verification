@@ -48,7 +48,7 @@ task pulpino_i2c_master_ip_virtual_basicWriteFollowedByRead_seq::body();
   //  transaction_key.get(1);
     apb_master_basic_write_seq_h.transmitData = 8'hBC;
     apb_master_basic_write_seq_h.start(p_sequencer.apb_master_seqr_h);
-    wait(wr_rd.triggered);
+  //  wait(wr_rd.triggered);
     apb_master_basic_read_seq_h.start(p_sequencer.apb_master_seqr_h);
    // GopalS:   wait(wr_rd.triggered);
  //   transaction_key.put(1);
@@ -56,6 +56,13 @@ task pulpino_i2c_master_ip_virtual_basicWriteFollowedByRead_seq::body();
     `uvm_error("master_vseq",$sformatf("Tx != RX data :: tx_data = %0x and rx_data = %0x",
                                       apb_master_basic_write_seq_h.transmitData,
                                       apb_master_basic_read_seq_h.receivedData))
+  end
+
+  else begin
+    `uvm_info("master_vseq",$sformatf("Tx == RX data :: tx_data = %0x and rx_data = %0x",
+                                      apb_master_basic_write_seq_h.transmitData,
+                                      apb_master_basic_read_seq_h.receivedData),UVM_MEDIUM)
+
   end
 
     `uvm_info("master_vseq",$sformatf("ended master vseq"),UVM_HIGH)

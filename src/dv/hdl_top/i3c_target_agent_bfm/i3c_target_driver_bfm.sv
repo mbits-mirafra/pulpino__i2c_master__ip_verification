@@ -180,10 +180,11 @@ interface i3c_target_driver_bfm(input pclk,
 
 
   task driveAddressAck(input bit ack);
+    bit [1:0] scl_local;
     state = ACK_NACK;
-    detectEdge_scl(,NEGEDGE);
+    detectEdge_scl(scl_local,NEGEDGE);
     drive_sda(ack); 
-    detectEdge_scl(2'b10,POSEDGE);
+    detectEdge_scl(scl_local,NEGEDGE);
     drive_sda(1);
   endtask: driveAddressAck
 
@@ -213,10 +214,11 @@ interface i3c_target_driver_bfm(input pclk,
 
 
   task driveWdataAck(input bit ack);
+    bit [1:0] scl_local;
     state = ACK_NACK;
-    detectEdge_scl(,NEGEDGE);
+    detectEdge_scl(scl_local,NEGEDGE);
     drive_sda(ack); 
-    detectEdge_scl(2'b10,POSEDGE);
+    detectEdge_scl(scl_local,NEGEDGE);
     drive_sda(1);
   endtask: driveWdataAck
 
@@ -230,12 +232,11 @@ interface i3c_target_driver_bfm(input pclk,
       bit_no = (dir == MSB_FIRST) ? 
                 ((DATA_WIDTH - 1) - k) : k;
       
-      detectEdge_scl(scl_local,NEGEDGE);
       drive_sda(rdata[bit_no]);
       pkt.no_of_i3c_bits_transfer++;
+      detectEdge_scl(scl_local,NEGEDGE);
     end
     pkt.readData[i] = rdata;
-    detectEdge_scl(2'b10,POSEDGE);
     drive_sda(1); 
   endtask :drive_read_data
 

@@ -169,8 +169,9 @@ task apb_master_basic_read_seq::body();
                               req.pwrite == READ;}) begin : RXREG_W
       `uvm_fatal("APB","Rand failed");
     end
-    `uvm_info(tx_reg,$sformatf("tx_reg_seq = \n %0p",req.sprint()),UVM_MEDIUM)
+    `uvm_info(rx_reg,$sformatf("before finish_item rx_reg_seq = \n %0p",req.sprint()),UVM_MEDIUM)
     finish_item(req);
+    `uvm_info(rx_reg,$sformatf("after finish_item rx_reg_seq = \n %0p",req.sprint()),UVM_MEDIUM)
     receivedData = req.prdata;
 
 endtask : body
