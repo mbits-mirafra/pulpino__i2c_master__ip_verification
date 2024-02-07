@@ -57,6 +57,9 @@ usage:
 	echo "Example:":
 	echo "make simulate test=pulpino_i2c_master_ip_base_test uvm_verbosity=UVM_HIGH";
 	echo "";
+	echo "To provide seed number (default is random):"
+	echo "make simulate test=<test_name> uvm_verbosity=<VERBOSITY_LEVEL> seed=<value>";
+	echo "";
 	echo "To run regression:"
 	echo "make regression testlist_name=<regression_testlist_name.list>";
 	echo "";
@@ -96,6 +99,12 @@ ifndef test
 override test = pulpino_i2c_master_ip_base_test
 endif
 
+# Setting the default seed value to random 
+ifndef seed
+override seed = random 
+endif
+
+
 # Setting the default uvm_verbosity to UVM_MEDIUM
 ifndef uvm_verbosity
 override uvm_verbosity = UVM_MEDIUM
@@ -125,6 +134,7 @@ simulate:
 	work.hvl_top \
 	work.hdl_top \
 	-voptargs=+acc=npr \
+	-sv_seed $(seed) \
 	-assertdebug \
 	+UVM_TESTNAME=$(test) \
 	+UVM_VERBOSITY=$(uvm_verbosity) \

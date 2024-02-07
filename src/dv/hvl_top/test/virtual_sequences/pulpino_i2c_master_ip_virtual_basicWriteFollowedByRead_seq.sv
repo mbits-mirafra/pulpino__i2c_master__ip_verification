@@ -46,7 +46,7 @@ task pulpino_i2c_master_ip_virtual_basicWriteFollowedByRead_seq::body();
   repeat(1) begin
     `uvm_info("master_vseq",$sformatf("started master vseq"),UVM_HIGH)
   //  transaction_key.get(1);
-    apb_master_basic_write_seq_h.transmitData = 8'hBC;
+    apb_master_basic_write_seq_h.transmitData = $urandom_range(1,254);
     apb_master_basic_write_seq_h.start(p_sequencer.apb_master_seqr_h);
   //  wait(wr_rd.triggered);
     apb_master_basic_read_seq_h.start(p_sequencer.apb_master_seqr_h);
