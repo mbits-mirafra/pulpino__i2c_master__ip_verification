@@ -9,6 +9,8 @@ IP Veriification of I2C master using the I3C VIP
 # Key Features of RTL 
 1.
 2. 
+3.
+4.
 
 
 # Testbench Architecture Diagram
@@ -18,6 +20,7 @@ IP Veriification of I2C master using the I3C VIP
 
 # Developers, Welcome
 We believe in growing together and if you'd like to contribute, please do check out the contributing guide below:  
+https://github.com/mbits-mirafra/pulpino__i2c_master__ip_verification/blob/main/contribution_guidelines.md
 
 
 # Installation - Get the VIP collateral from the GitHub repository
@@ -108,3 +111,6 @@ You can reach out to us over mbits@mirafra.com
 
 For more information regarding Mirafra Technologies please do checkout our officail website:  
 https://mirafra.com/
+
+## Follow the below link for I3C_AVIP Project  
+https://github.com/mbits-mirafra/i3c_avip/tree/production
