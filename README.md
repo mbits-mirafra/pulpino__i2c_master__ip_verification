@@ -1,29 +1,35 @@
 # pulpino__i2c_master__ip_verification
-IP Veriification of I2C master using the I3C VIP
+IP Verification of I2C master using the I3C VIP
 
-# IP Verification of Pulpino I2C Master using the I3C VIP
 
-# Block Diagram
+### IP Verification of Pulpino I2C Master using the I3C VIP
+
+### Block Diagram  
 ![image](https://github.com/mbits-mirafra/pulpino__i2c_master__ip_verification/assets/106074838/2fc6d151-9bd1-4d8c-b766-bafb54014bb1)
 
-# Key Features of RTL 
-1.
-2. 
-3.
-4.
+
+### Key Features of RTL 
+1. It supports a two-wire serial interface.
+2. Multi-master operation
+3. Programmable clock frequency
+4. Interrupt or bit-polling-driven byte-by-byte data transfer 
+5. Start, Stop, repeated Start, Acknowledge generation
+6. Bus busy detection
+7. Legacy I2C Device coexistence on the same bus
+8. Support 7-bit Addressing mode
 
 
-# Testbench Architecture Diagram
+### Testbench Architecture Diagram
 ![image](https://github.com/mbits-mirafra/pulpino__i2c_master__ip_verification/assets/106074838/a23bb03d-7f8b-4faa-8859-6ff6ed81785b)
 
 
 
-# Developers, Welcome
+### Developers, Welcome
 We believe in growing together and if you'd like to contribute, please do check out the contributing guide below:  
 https://github.com/mbits-mirafra/pulpino__i2c_master__ip_verification/blob/main/contribution_guidelines.md
 
 
-# Installation - Get the VIP collateral from the GitHub repository
+### Installation - Get the VIP collateral from the GitHub repository
 
 ```
 # Checking for git software, open the terminal type the command
@@ -33,9 +39,9 @@ git version
 git clone git@github.com:mbits-mirafra/pulpino__i2c_master__ip_verification.git
 ```
 
-# Running the test
+### Running the test
 
-### Using Mentor's Questasim simulator 
+#### Using Mentor's Questasim simulator 
 
 ```
 cd pulpino__i2c_master__ip_verification/sim/questasim
@@ -71,7 +77,7 @@ ex: make regression testlist_name=pulpino_i2c_master_ip_verification_regression.
 ```
 
 
-### Using Cadence's Xcelium simulator 
+#### Using Cadence's Xcelium simulator 
 
 ```
 cd pulpino__i2c_master__ip_verification/sim/cadence_sim
@@ -99,18 +105,21 @@ imc -load cov_work/scope/test/ &
 
 ```
 
-## Technical Document 
+### Technical Document 
 
 https://docs.google.com/document/d/1ZiSF0E3bq1fM0sJDv_D75oV2MdA1mgEU1q4QouveBSE/
 
-## User Guide  
 
+### Testbench Architecture Diagram of I3C_AVIP Project 
+![image](https://github.com/mbits-mirafra/i3c_avip/assets/106074838/32227a76-6131-42aa-8a01-6db2b224aba1)
 
-## Contact Mirafra Team  
+Follow the below link for I3C_AVIP Project  
+https://github.com/mbits-mirafra/i3c_avip/tree/production
+
+### Contact Mirafra Team  
 You can reach out to us over mbits@mirafra.com
 
 For more information regarding Mirafra Technologies please do checkout our officail website:  
 https://mirafra.com/
 
-## Follow the below link for I3C_AVIP Project  
-https://github.com/mbits-mirafra/i3c_avip/tree/production
+
