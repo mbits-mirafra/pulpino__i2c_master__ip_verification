@@ -109,6 +109,8 @@ imc -load cov_work/scope/test/ &
 
 https://github.com/mbits-mirafra/pulpino__i2c_master__ip_verification/issues/2#issuecomment-1937049660  
 
+### Waveform for Data transfer on I2C
+![MicrosoftTeams-image (1)](https://github.com/mbits-mirafra/pulpino__i2c_master__ip_verification/assets/15922511/191da74e-a051-4645-859b-1a8d014a8c36)
 
 ### Technical Document 
 
